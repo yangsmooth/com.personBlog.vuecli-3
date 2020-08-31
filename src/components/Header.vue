@@ -1,34 +1,38 @@
 <template>
 	<header class="Header">
-		<nav class="navbar navbar-expand-lg navbar-light bg-secondary p-0">
-			<a class="py-2 pl-3" href="#" title="Logo">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto">
-					<circle cx="12" cy="12" r="10"></circle>
-					<line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
-					<line x1="9.69" y1="8" x2="21.17" y2="8"></line>
-					<line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
-					<line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
-					<line x1="14.31" y1="16" x2="2.83" y2="16"></line>
-					<line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
-				</svg>
-			</a>
-			<a href="/" class="navbar-brand ml-3 mb-1">That Girl</a>
-			<ul class="navbar-nav ml-3">
-				<li><router-link :to="{name:'Home'}" class="nav-link ml-1" title="主页"><i class="fa fa-home"></i><span class="badge">{{messageCount.homeMessage}}</span></router-link></li>
-				<li><router-link :to="{name:'Email'}" class="nav-link mr-1" title="邮箱"><i class="fa fa-envelope"></i><span class="badge">{{messageCount.emailMessage}}</span></router-link></li>
-				<li><router-link :to="{name:'Warn'}" class="nav-link mr-1" title="通告"><i class="fa fa-bell"></i><span class="badge">{{messageCount.warnMessage}}</span></router-link></li>
-				<li><a href="#" class="nav-link mr-1" @click="showSearch = !showSearch" title="搜索"><i class="fa fa-search"></i></a></li>
-				<div v-show="showSearch">
+		<nav class="navbar navba-expand-lg navbar-light bg-secondary p-0">
+			<!-- LOgo信息及名称 -->
+			<div class="logoInfo">
+                <a class="py-2 pl-3" href="#" title="Logo">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto">
+						<circle cx="12" cy="12" r="10"></circle>
+						<line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+						<line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+						<line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+						<line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+						<line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+						<line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+					</svg>
+				</a>
+				<a href="/" class="navbar-brand ml-2">mosie的BLOG</a>
+			</div>
+			<!-- 头部导航 -->
+			<ul class="navbar-nav d-none d-sm-block d-md-block header-tabar mr-auto clearfix">
+				<li class="nav-item float-left ml-3"><router-link :to="{name:'Home'}" class="nav-link" title="主页"><i class="fa fa-home"></i><span class="badge">{{messageCount.homeMessage}}</span></router-link></li>
+				<li class="nav-item float-left ml-3"><router-link :to="{name:'Email'}" class="nav-link mr-1" title="邮箱"><i class="fa fa-envelope"></i><span class="badge">{{messageCount.emailMessage}}</span></router-link></li>
+				<li class="nav-item float-left ml-3"><router-link :to="{name:'Warn'}" class="nav-link mr-1" title="通告"><i class="fa fa-bell"></i><span class="badge">{{messageCount.warnMessage}}</span></router-link></li>
+				<li class="nav-item float-left ml-3"><a href="#" class="nav-link mr-1" @click="showSearch = !showSearch" title="搜索"><i class="fa fa-search"></i></a></li>
+				<div class="nav-item float-left ml-1" v-show="showSearch">
 					<input id="search-content" class="search-content mt-1" type="text" placeholder="搜索你输入的关键字" />
 					<button id="search-button">搜索</button>
 				</div>
 			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li>
-					<a href="#" class="nav-link" title="头像"><img class="rounded-circle" :src="userImgURL" width="30px" height="30px" alt="头像"></a>
-				</li>
-				<li class="user-info px-0">
-					<a href="#" class="username nav-link" title="username">{{username}}<span class="caret"></span></a>
+			<img class="menu d-sm-block d-md-none d-lg-none ml-auto mr-3" src="../assets/icon/icon_threeline_fill.png" alt="目录" @click='showPerson'>
+			<!-- 用户信息 -->
+			<ul class="nav d-none d-sm-block d-md-block clearfix">
+				<li class="nav-item float-left"><a href="#" class="nav-link pr-1" title="头像"><img class="rounded-circle" :src="userImgURL" width="30px" height="30px" alt="头像"></a></li>
+				<li class="nav-item user-info float-left px-0">
+					<a href="#" class="username nav-link mx-0 px-xs-0" title="username">{{username}}<span class="caret"></span></a>
 					<ul class="navbar-nav usermenu">
 						<li>
 							<a href="#" class="nav-link pl-2">个人中心</a>
@@ -47,8 +51,8 @@
 						</li>
 					</ul>
 				</li>
-				<li>
-					<router-link :to="{name:'OnlineChat'}" class="nav-link mr-4" title="message"><i class="fa fa-comments"></i><span class="badge">{{messageCount.onlineMessage}}</span></router-link>
+				<li class="nav-item float-left">
+					<router-link :to="{name:'OnlineChat'}" class="nav-link pl-1" title="message"><i class="fa fa-comments"></i><span class="badge">{{messageCount.onlineMessage}}</span></router-link>
 				</li>
 			</ul>
 		</nav>
@@ -65,6 +69,7 @@
 		},
 		data() {
 			return {
+				isShowPersonInfo:this.$store.state.isShowPersonInfo,
 				'showSearch': false,
 				'username':this.$store.state.userName,
 				'userImgURL': this.$store.state.userImg,
@@ -76,6 +81,13 @@
 				}
 			}
 		},
+		methods:{
+		   showPerson(){
+			   console.log('tag', this.isShowPersonInfo)
+			   this.isShowPersonInfo=!this.$store.state.isShowPersonInfo
+		       this.$store.commit('ShowPersonInfo')
+		   }
+        },
 		components: {
 			
 		}
@@ -88,11 +100,17 @@
 		top: 0px;
 		z-index: 1;
 	}
-	
+	.logoInfo{
+		display: flex;
+		flex-wrap: nowrap;
+	}
+	.navbar{
+		display: flex;
+		flex-wrap: nowrap;
+	}
 	.fa-home {
 		font-size: 20px;
-	}
-	
+	}	
 	.fa-envelope,
 	.fa-bell {
 		font-size: 15px;
@@ -101,7 +119,10 @@
 	.fa-search {
 		font-size: 17px;
 	}
-	
+	.menu{
+		width: 1.8em;
+		height:1.8em;
+	}
 	#search-content {
 		outline: none;
 		height: 30px;
@@ -141,15 +162,16 @@
 	
 	.username {
 		display: flex;
-		padding-right: 0px;
+		color: #363A3E;
+		/* padding-right: 0px; */
 	}
 	
 	.caret {
-		margin-left: 3px;
+		margin-left: 5px;
 		margin-top: 10px;
 		width: 0;
 		height: 0;
-		border-width: 8px;
+		border-width: 6px;
 		border-style: solid;
 		border-color: rgba(0, 0, 0, .5) transparent transparent transparent;
 	}
