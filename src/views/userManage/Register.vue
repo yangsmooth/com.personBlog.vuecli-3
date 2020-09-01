@@ -9,28 +9,25 @@
 
 export default {
   name: 'Register',
-  props:{
-  	
+  props: {
+
   },
-  //ES6д��
-  data(){
+  data () {
     return {
-				
-	}
+
+    }
   },
-  computed:{
-		
+  computed: {
+
   },
-  methods:{
-		
+  methods: {
+
   },
-  components:{
-  	
+  components: {
+
   }
 }
 </script>
 
-
 <style scoped>
-
 </style>

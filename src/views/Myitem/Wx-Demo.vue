@@ -9,28 +9,26 @@
 
 export default {
   name: 'Wx-Demo',
-  props:{
-  	
+  props: {
+
   },
-  //ES6д��
-  data(){
+  // ES6д��
+  data () {
     return {
-				
-	}
+
+    }
   },
-  computed:{
-		
+  computed: {
+
   },
-  methods:{
-		
+  methods: {
+
   },
-  components:{
-  	
+  components: {
+
   }
 }
 </script>
 
-
 <style scoped>
-
 </style>

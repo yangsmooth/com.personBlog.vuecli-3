@@ -9,28 +9,24 @@
 
 export default {
   name: 'Other',
-  props:{
-  	
-  },
-  //ES6д��
-  data(){
+  props: {},
+  // ES6д��
+  data () {
     return {
-				
-	}
+
+    }
   },
-  computed:{
-		
+  computed: {
+
   },
-  methods:{
-		
+  methods: {
+
   },
-  components:{
-  	
+  components: {
+
   }
 }
 </script>
 
-
 <style scoped>
-
 </style>

@@ -8,27 +8,19 @@
 
 export default {
   name: 'Email',
-  props:{
-  	
-  },
-  //ES6语法
-  data(){
+  props: {},
+  // ES6语法
+  data () {
     return {
-				
-	}
+
+    }
   },
-  computed:{
-		
-  },
-  methods:{
-		
-  },
-  components:{
-  	
+  computed: {},
+  methods: {
+
   }
 }
 </script>
 
 <style scoped>
-
 </style>
